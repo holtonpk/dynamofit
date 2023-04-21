@@ -86,9 +86,7 @@ export async function getStaticProps({ params }: any) {
     // the API because it hasn't been deployed yet. This dummy product will get
     // you through that first deploy.
     props: {
-      product: {
-        ...dummyProduct,
-      },
+      product: dummyProduct,
     },
   };
 }
