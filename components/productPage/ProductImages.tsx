@@ -59,7 +59,10 @@ const DesktopProductImages = ({ product, selectedProduct }: any) => {
       </div>
       <div className="  w-full grid grid-cols-2 gap-8 h-fit p-8">
         {productImages.slice(1, 5).map((image: any, index: any) => (
-          <div className="w-full aspect-square  rounded-md overflow-hidden relative  shadow-lg">
+          <div
+            key={index}
+            className="w-full aspect-square  rounded-md overflow-hidden relative  shadow-lg"
+          >
             <Image
               src={image.src}
               alt={image.altText}

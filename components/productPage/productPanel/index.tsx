@@ -325,7 +325,7 @@ const ProductDescription = () => {
         new BFF!
       </p>
       <ul className="list-disc pl-6 text-base text-black/80">
-        <li className="mb-2">Collapses from 13.8" to 5.2"</li>
+        <li className="mb-2">Collapses from 13.8&quot; to 5.2&quot;</li>
         <li className="mb-2">
           High-density, trigger point technology targets deep stretch
         </li>

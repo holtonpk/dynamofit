@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="w-full  flex items-center justify-center flex-col   ">
             <h2 className="text-lg font-bold mb-2">About Us</h2>
             <p className="mb-2 text-white/70 md:w-[50%] text-center">
-              We're a passionate team dedicated to providing high-quality,
+              We&apos;re a passionate team dedicated to providing high-quality,
               innovative fitness solutions. Our mission is to empower
               individuals to achieve their wellness goals and live healthier,
               happier lives. Join our community and experience the difference!

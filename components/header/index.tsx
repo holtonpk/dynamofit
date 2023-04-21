@@ -18,7 +18,13 @@ const Header = () => {
 
       <header className="bg-[#1f2625]  sticky  transition-all duration-300 h-20  z-10 blurBack top-0 w-full  text-white  flex justify-between items-center px-8 ">
         <div className="w-[150px] aspect-[163/575] rounded-full relative">
-          <Image src={logo} fill objectFit="contain" className="rounded-full" />
+          <Image
+            alt="logo"
+            src={logo}
+            fill
+            objectFit="contain"
+            className="rounded-full"
+          />
         </div>
         <div className="flex items-center gap-4 w-fit">
           {/* <button className="rounded-full flex items-center justify-center p-2 border-2 border-white md:h-12 md:w-12 h-10 w-10">
