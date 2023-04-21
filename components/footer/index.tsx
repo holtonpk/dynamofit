@@ -18,29 +18,6 @@ const Footer = () => {
           </div>
 
           <div className="grid grid-cols-1 w-full  ">
-            {/* <div className="w-full  flex flex-col items-center justify-center   ">
-              <h2 className="text-lg font-bold mb-4">Links</h2>
-              <ul className="list-none flex flex-col justify-between md:justify-start  items-center  w-[50%] md:w-fit  text-white/70">
-                <li className="mb-2">
-                  <a href="#" className="hover:text-gray-300">
-                    Returns Policy
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="hover:text-gray-300"></a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="hover:text-gray-300">
-                    About Us
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="hover:text-gray-300">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div> */}
             <div className="w-full  flex flex-col items-center justify-center">
               <h2 className="text-lg font-bold mb-4">Contact</h2>
               <ul className="list-none  flex flex-col w-[50%] items-center  text-white/70">
