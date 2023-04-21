@@ -98,10 +98,14 @@ export default function Product({ product }: any) {
 
   return (
     <div className="min-h-screen bg-white flex flex-col justify-between ">
-      <CartPreview />
-      <Header />
-      <ProductPage product={product} />
-      <Footer />
+      {product && (
+        <>
+          <CartPreview />
+          <Header />
+          <ProductPage product={product} />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
