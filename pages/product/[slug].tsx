@@ -87,7 +87,7 @@ export async function getStaticProps({ params }: any) {
     // you through that first deploy.
     props: {
       product: {
-        dummyProduct,
+        ...dummyProduct,
       },
     },
   };
