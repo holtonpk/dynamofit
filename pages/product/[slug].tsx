@@ -96,6 +96,8 @@ export async function getStaticProps({ params }: any) {
 export default function Product({ product }: any) {
   // console.log("product ===>", JSON.stringify(product));
 
+  console.log("PPPPPP", product);
+
   return (
     <div className="min-h-screen bg-white flex flex-col justify-between ">
       {product && (
