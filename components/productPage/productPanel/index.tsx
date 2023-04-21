@@ -95,9 +95,10 @@ const OrderButtons = ({ selectedProduct }: any) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const buyNowStaticPosition = buyNowStatic.current.getBoundingClientRect();
-      const buyNowStaticPositionTop = buyNowStaticPosition.top;
-      const buyNowStaticPositionBottom = buyNowStaticPosition.bottom;
+      const buyNowStaticPosition =
+        buyNowStatic.current?.getBoundingClientRect();
+      const buyNowStaticPositionTop = buyNowStaticPosition?.top || 0;
+      const buyNowStaticPositionBottom = buyNowStaticPosition?.bottom || 0;
       const windowHeight = window.innerHeight;
       if (buyNowStaticPositionTop > windowHeight) {
         setShowFixedButton(false);
@@ -107,6 +108,7 @@ const OrderButtons = ({ selectedProduct }: any) => {
         setShowFixedButton(false);
       }
     };
+    const buyNowStatic = React.createRef<HTMLElement>();
     window.addEventListener("scroll", handleScroll);
 
     return () => {

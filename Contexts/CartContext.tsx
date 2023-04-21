@@ -16,7 +16,7 @@ export const CartProvider = ({ children }: Props) => {
 
   const addToCart = (product: any) => {
     const productIndex = cart.findIndex(
-      (item) => item.variantId === product.variantId
+      (item: any) => item.variantId === product.variantId
     );
     const newCart = [...cart];
     if (newCart[productIndex]) {
@@ -29,7 +29,7 @@ export const CartProvider = ({ children }: Props) => {
 
   const updateQuantity = (e: any, productTitle: any) => {
     const productIndex = cart.findIndex(
-      (product) => product.title === productTitle
+      (product: any) => product.title === productTitle
     );
     if (productIndex !== -1) {
       const newCart = [...cart];

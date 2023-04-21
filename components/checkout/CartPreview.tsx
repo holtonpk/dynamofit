@@ -139,7 +139,9 @@ const CartPreview = () => {
                               </h2>
                               <h2 className="text-lg text-black font-bold">
                                 {formatPrice(
-                                  product.price.amount * product.quantity
+                                  JSON.stringify(
+                                    product.price.amount * product.quantity
+                                  )
                                 ) + " USD"}
                               </h2>
                             </Link>
