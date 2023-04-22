@@ -114,7 +114,7 @@ const MoreInfo = () => {
             className="rounded w-full h-full"
           />
         </div>
-        <div className="flex flex-col p-4  md:w-[60%] items-center">
+        <div className="flex flex-col p-4 max-w-full  md:w-[60%] items-center">
           <span className="relative  gap-2 w-fit whitespace-  text- h-fit text-lg md:text-5xl flex flex font-bold rounded-md bottom-0 ">
             Made by
             <h1 className="font-extrabold text-transparent  bg-clip-text bg-gradient-to-r from-main-800 via-main-400  to-main-800">
