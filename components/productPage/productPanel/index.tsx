@@ -101,7 +101,7 @@ const OrderButtons = ({ selectedProduct }: any) => {
       if (top === undefined || bottom === undefined) return;
 
       const windowHeight = window.innerHeight;
-      const showFixedButton = top > windowHeight || bottom < 60;
+      const showFixedButton = top > windowHeight - 40;
 
       setShowFixedButton(showFixedButton);
     };
