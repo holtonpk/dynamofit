@@ -1,4 +1,5 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext, useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 const CartContext = createContext<any | null>(null);
 
@@ -13,6 +14,21 @@ interface Props {
 export const CartProvider = ({ children }: Props) => {
   const [showCartPreview, setShowCartPreview] = useState(false);
   const [cart, setCart] = useState<any>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const storedCart = Cookies.get("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      Cookies.set("cart", JSON.stringify(cart));
+    }
+  }, [cart, isLoaded]);
 
   const addToCart = (product: any) => {
     const productIndex = cart.findIndex(
@@ -38,9 +54,9 @@ export const CartProvider = ({ children }: Props) => {
     }
   };
 
-  const removeItem = (productTitle: any) => {
+  const removeItem = (variantId: any) => {
     const newCart = cart.filter((product: any) => {
-      return product.title !== productTitle;
+      return product.variantId !== variantId;
     });
     setCart(newCart);
   };
@@ -53,8 +69,6 @@ export const CartProvider = ({ children }: Props) => {
       };
     }),
   ];
-
-  console.log(checkoutObject);
 
   const cartTotalPrice =
     cart.length > 0 &&

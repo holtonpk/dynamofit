@@ -9,7 +9,6 @@ import { formatPrice } from "../productPage/productPanel/index";
 import { useRouter } from "next/router";
 
 const CartPreview = () => {
-  const router = useRouter();
   const {
     showCartPreview,
     setShowCartPreview,
@@ -26,47 +25,13 @@ const CartPreview = () => {
   const toggleCart = () => {
     setShowCartPreview(!showCartPreview);
   };
+  const router = useRouter();
 
-  console.log("checkoutObject", checkoutObject);
-
-  const goToCheckout = () => {
-    async function getCheckoutLink() {
-      try {
-        const res = await fetch("/api/createCheckout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-line-items": JSON.stringify(checkoutObject),
-          },
-        });
-
-        if (!res.ok) {
-          throw new Error(`Server error: ${res.status}`);
-        }
-
-        const data = await res.json();
-
-        if (
-          data &&
-          data.checkoutCreate &&
-          data.checkoutCreate.checkout &&
-          data.checkoutCreate.checkout.webUrl
-        ) {
-          const checkoutLink = data.checkoutCreate.checkout.webUrl;
-          router.push(checkoutLink);
-        } else {
-          throw new Error("Invalid data format received");
-        }
-      } catch (error) {
-        console.error("Error in getCheckoutLink:", error);
-        // Handle the error as appropriate, e.g., show an error message to the user
-      }
-    }
-
-    getCheckoutLink();
+  const goToCheckout = async () => {
+    const checkoutLink = await getCheckoutLink(checkoutObject);
+    console.log(checkoutLink);
+    router.push(checkoutLink);
   };
-
-  console.log("cart", JSON.stringify(cart));
 
   return (
     <>
@@ -145,7 +110,7 @@ const CartPreview = () => {
                             </Link>
                             <div className="flex justify-between items-center w-full mt-3">
                               <button
-                                onClick={() => removeItem(product.title)}
+                                onClick={() => removeItem(product.variantId)}
                                 className="rounded-full h-8 w-8 p-1 flex items-center justify-center bg-black/10 hover:bg-black/30"
                               >
                                 <BsTrash3 className="h-4 w-4 text-black" />
@@ -230,3 +195,43 @@ const CartPreview = () => {
 };
 
 export default CartPreview;
+
+interface getCheckoutLinkProps {
+  checkoutObject: any;
+}
+
+export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
+  try {
+    const res = await fetch("/api/createCheckout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-line-items": JSON.stringify(checkoutObject),
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Server error: ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log("data:", data);
+
+    if (
+      data &&
+      data.checkoutCreate &&
+      data.checkoutCreate.checkout &&
+      data.checkoutCreate.checkout.webUrl
+    ) {
+      const checkoutLink = data.checkoutCreate.checkout.webUrl;
+      console.log("checkoutLink:", checkoutLink);
+      return checkoutLink;
+    } else {
+      throw new Error("Invalid data format received");
+    }
+  } catch (error) {
+    console.error("Error in getCheckoutLink:", error);
+    return null;
+    // Handle the error as appropriate, e.g., show an error message to the user
+  }
+};

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductImages from "./ProductImages";
 import ProductPanel from "./productPanel/index";
-import Questions from "./Questions";
 import Review from "./Review";
 import Image from "next/image";
 import moreImage1 from "../../public/images/moreimage1.webp";
@@ -28,7 +27,6 @@ const ProductPage = ({ product }: any) => {
     <div className="min-h-screen pb-6">
       <div className="flex product-grid w-full">
         <ProductImages product={product} selectedProduct={selectedProduct} />
-
         <ProductPanel
           product={product}
           selectedProduct={selectedProduct}
@@ -36,33 +34,13 @@ const ProductPage = ({ product }: any) => {
         />
       </div>
       <MoreInfo />
-      <div className="flex flex-col md:flex-row mt-6 md:w-screen">
-        <Review product={product} />
-      </div>
+      <Review product={product} />
       <FAQ />
     </div>
   );
 };
 
 export default ProductPage;
-
-const productHard = {
-  title: "Test Product",
-  price: 100.0,
-  discountedPrice: 60.0,
-  totalReviews: 10,
-  productImages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-  quantity: 1,
-  reviews: [
-    {
-      name: "Emily",
-      rating: 5,
-      title: "Best pillow ever!",
-      description:
-        "I'm absolutely in love with this Luxury Memory Foam Pillow! It's incredibly comfortable and has helped me get a better night's sleep. I love how it conforms to my head and neck, and the adjustable loft is a game-changer. The bamboo cover is also a great touch - it's soft, hypoallergenic, and keeps me cool all night long. I highly recommend this pillow to anyone looking for a better sleep experience.",
-    },
-  ],
-};
 
 const MoreInfo = () => {
   return (
@@ -133,23 +111,6 @@ const MoreInfo = () => {
           </p>
         </div>
       </div>
-      {/* <div className="flex items-center justify-between p-4 md:p-10 ">
-        <p className="text-lg flex-shrink w-[50%] md:text-2xl text-black  p-4 md:p-10">
-          And did we mention how incredibly easy it is to use? Just{" "}
-          <span className="font-bold">snap, roll, and relax</span>! 😌 The
-          PocketRoller's unique design lets you extend and retract in a snap,
-          making it the ultimate no-fuss solution for maintaining happy, healthy
-          muscles! 🎯
-        </p>
-        <div className="w-[50%] md:w-[40%] aspect-square overflow-hidden relative shadow-lg">
-          <Image
-            src={moreImage1}
-            alt="image"
-            fill
-            className="rounded w-full h-full"
-          />
-        </div>
-      </div> */}
     </div>
   );
 };

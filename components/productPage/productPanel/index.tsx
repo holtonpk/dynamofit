@@ -11,11 +11,11 @@ import { useCart } from "@/Contexts/CartContext";
 import { TbStarFilled, TbStar, TbStarHalfFilled } from "react-icons/tb";
 import Image from "next/image";
 import Questions from "../Questions";
-
+import { getCheckoutLink } from "@/components/checkout/CartPreview";
 import ReturnsImage from "@/public/images/Returns.png";
 import ShippingImage from "@/public/images/Shipping.png";
 import SupportImage from "@/public/images/Support.png";
-
+import { useRouter } from "next/router";
 const ProductPanel = ({
   product,
   selectedProduct,
@@ -23,9 +23,7 @@ const ProductPanel = ({
 }: any) => {
   return (
     <div className=" md:h-fit p-10 flex flex-col ">
-      <h1 className="text-4xl md:text-5xl  font-sans font-bold text-[#141414]">
-        {product.title} ™
-      </h1>
+      <Title title={product.title + "™"} />
       <Reviews product={product} />
       <Price product={product} />
       <ProductDescription />
@@ -34,62 +32,46 @@ const ProductPanel = ({
         setSelectedProduct={setSelectedProduct}
         selectedProduct={selectedProduct}
       />
-
       <OrderButtons selectedProduct={selectedProduct} />
-
       <Policy />
-
-      {/* <div className="bg-white p-6 rounded-lg shadow-md mt-8">
-        <h2 className="text-2xl md:text-2xl font-bold mb-4 text-center whitespace-nowrap">
-          🎉 Introducing the PocketRoller! 🎉
-        </h2>
-        <p className="text-base md:text-base mb-4 text-center">
-          <span className="font-bold">
-            Are you timain of lugging around bulky foam rollers?
-          </span>{" "}
-          Say hello to your new BFF, the PocketRoller! It's collapsible,
-          compact, and oh-so-easy to take with you wherever you go!
-        </p>
-        <ul className="list-disc pl-6 text-base">
-          <li className="mb-2">
-            <span className="font-bold">Innovative Design:</span> Collapses from
-            13.8" to 5.2" for easy storage & travel, and endures up to 280 lbs
-            of deep tissue pressure.
-          </li>
-          <li className="mb-2">
-            <span className="font-bold">Deep Tissue Pressure:</span>{" "}
-            High-density, trigger point technology targets deep stretch for
-            legs, back, calf, hamstring, and arms.
-          </li>
-          <li className="mb-2">
-            <span className="font-bold">Fascia Recovery Tool:</span> Treats
-            myofascial pain, increases flexibility & performance during
-            workouts.
-          </li>
-          <li>
-            <span className="font-bold">At-Home Massage:</span> Decrease knots &
-            increase comfort with a handheld therapist experience.
-          </li>
-        </ul>
-      </div> */}
-      {/* <div className="w-full mt-8">
-        <Questions />
-      </div> */}
-
-      {/* <Tabs product={product} /> */}
     </div>
   );
 };
 
-const OrderButtons = ({ selectedProduct }: any) => {
-  const { addToCart, setShowCartPreview } = useCart();
+const Title = ({ title }: any) => {
+  return (
+    <h1 className="text-4xl font-sans font-bold text-[#141414]">{title}</h1>
+  );
+};
 
+const OrderButtons = ({ selectedProduct }: any) => {
+  const [redirectToCheckout, setRedirectToCheckout] = useState(false);
   const [showFixedButton, setShowFixedButton] = useState(false);
+
+  const { addToCart, setShowCartPreview, checkoutObject } = useCart();
+  const router = useRouter();
+
   const buyNowStatic = useRef<HTMLButtonElement>(null);
   const addItemToCart = () => {
     addToCart(selectedProduct);
     setShowCartPreview(true);
   };
+
+  const buyNow = async () => {
+    await addToCart(selectedProduct);
+    setRedirectToCheckout(true);
+  };
+
+  useEffect(() => {
+    const redirectToLink = async () => {
+      if (redirectToCheckout) {
+        const checkoutLink = await getCheckoutLink(checkoutObject);
+        router.push(checkoutLink);
+      }
+    };
+
+    redirectToLink();
+  }, [redirectToCheckout, checkoutObject]);
 
   // when buyNowStatic is out of frame then show the fixed button
 
@@ -125,12 +107,13 @@ const OrderButtons = ({ selectedProduct }: any) => {
       )}
       <div className="flex flex-col gap-4 mt-4">
         <button
-          ref={buyNowStatic}
+          onClick={buyNow}
           className=" bg-main-600 hover:bg-black w-full rounded-md p-3 flex items-center justify-center text-white  text-lg "
         >
           Buy Now
         </button>
         <button
+          ref={buyNowStatic}
           onClick={addItemToCart}
           className="bg-neutral-500 hover:from-neutral-400 hover:via-neutral-500  hover:to-neutral-400  w-full rounded-md p-3 flex items-center justify-center text-white text-lg"
         >

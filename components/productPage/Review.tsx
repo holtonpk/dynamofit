@@ -29,7 +29,7 @@ const Review = ({ product }: any) => {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8 mt-6 md:w-screen">
       <h1 className="font-bold text-xl pb-3">
         Customer Reviews
         {"(" + reviews.length + ")"}
