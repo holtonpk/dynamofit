@@ -17,7 +17,7 @@ const Header = () => {
       </div>
 
       <header className="bg-[#1f2625]  sticky  transition-all duration-300 h-20  z-10 blurBack top-0 w-full  text-white  flex justify-between items-center px-8 ">
-        <div className="w-[150px] aspect-[163/575] rounded-full relative">
+        <div className="w-[150px] aspect-[575/163] rounded-full relative">
           <Image
             alt="logo"
             src={logo}
