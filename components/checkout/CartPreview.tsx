@@ -202,21 +202,25 @@ interface getCheckoutLinkProps {
 
 export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
   try {
-    const url = new URL(process.env.URL || "http://localhost:3000");
+    // const url = new URL(process.env.URL || "http://localhost:3000");
 
-    console.log("envurl===>", process.env.URL);
+    // console.log("envurl===>", process.env.URL);
 
-    console.log("url===>", url);
+    // console.log("url===>", url);
 
-    url.pathname = "/api/createCheckout";
-
-    const res = await fetch(url.toString(), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-line-items": JSON.stringify(checkoutObject),
-      },
-    });
+    // url.pathname = "/api/createCheckout";
+    //dynamofit.vercel.app/
+    // const res = await fetch(url.toString(), {
+    https: const res = await fetch(
+      "https://dynamofit.vercel.app/api/createCheckout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-line-items": JSON.stringify(checkoutObject),
+        },
+      }
+    );
 
     if (!res.ok) {
       throw new Error(`Server error: ${res.status}`);
