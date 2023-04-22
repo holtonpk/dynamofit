@@ -20,7 +20,7 @@ const CartPreview = () => {
     checkoutObject,
   } = useCart();
 
-  console.log("cart==>", cart);
+  console.log("cart==>", process.env.NEXT_PUBLIC_VERCEL_URL);
 
   const toggleCart = () => {
     setShowCartPreview(!showCartPreview);
@@ -202,9 +202,12 @@ interface getCheckoutLinkProps {
 
 export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
   try {
-    const url = new URL(process.env.API_URL || "http://localhost:3000");
+    const url = new URL(
+      process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"
+    );
 
     console.log("envurl===>", process.env.API_URL);
+    console.log("envurl===>", process.env.HELLO);
 
     console.log("url===>", url);
 
