@@ -77,7 +77,7 @@ const CartPreview = () => {
             className="fixed z-20 bg-black/50 w-screen h-screen top-0 left-0 cursor-pointer "
           />
           <div className="z-30 rounded-t-xl md:rounded-none  fixed md:w-1/3 bottom-0  md:top-0 md:-translate-y-0 w-full md:left-full  md:-translate-x-full md:h-screen h-[80vh] bg-white  cart-preview-enter">
-            <div className="w-full mt-3 text-2xl h-[5%] flex items-center justify-center p-3 text-black font-bold relative">
+            <div className="w-full mt-3 text-2xl h-[5%] flex items-center justify-center p-3 text-black  relative">
               Your Bag
               <button
                 onClick={toggleCart}
@@ -92,9 +92,7 @@ const CartPreview = () => {
                 <div className="flex-fit overflow-scroll">
                   <div className="p-4 flex flex-col gap-3">
                     <div className="flex flex-col gap-3 w-full p-4 bg-black/5 items-center rounded-md">
-                      <h1 className="font-bold text-xl text-main-600">
-                        Summary
-                      </h1>
+                      <h1 className=" text-xl text-main-600">Summary</h1>
                       <div className="flex justify-between w-full">
                         <h1 className="text-base text-black/60">
                           {cartTotalQuantity} products
