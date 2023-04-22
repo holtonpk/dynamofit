@@ -16,7 +16,7 @@ const index = () => {
       </div>
 
       <Link
-        href={"/product/test"}
+        href={"/product/rectratable-foam-roller"}
         className="bg-main-500 text-white text-xl lg:text-3xl py-1 px-4 rounded-md hover:bg-black"
       >
         Shop Now
