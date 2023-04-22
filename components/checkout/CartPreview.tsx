@@ -202,14 +202,8 @@ interface getCheckoutLinkProps {
 
 export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
   try {
-    const url = new URL(
-      process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"
-    );
-
-    console.log("envurl===>", process.env.API_URL);
-    console.log("envurl===>", process.env.HELLO);
-
-    console.log("url===>", url);
+    console.log("envurl===>", process.env.NEXT_PUBLIC_URL);
+    const url = new URL(process.env.NEXT_PUBLIC_URL || "http://localhost:3000");
 
     url.pathname = "/api/createCheckout";
     //dynamofit.vercel.app/
