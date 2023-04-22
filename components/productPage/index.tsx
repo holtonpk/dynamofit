@@ -66,7 +66,7 @@ const productHard = {
 
 const MoreInfo = () => {
   return (
-    <div className="flex flex-col gap-3 lg:w-[80%] mx-auto  items-center">
+    <div className="flex flex-col gap-3 w-full lg:w-[80%] mx-auto  items-center">
       <div className="slide-in-bottom lg:my-20  w-[80%] md:w-[60%] lg:w-[60%] mt-20 lg:flex relative   ">
         <div className=" absolute h-[400px] aspect-[1/1.8] -translate-y-1/4 -translate-x-1/2 left-1/2 lg:translate-x-[70%] lg:-translate-y-1/2 lg:top-1/2  lg:right-0 main">
           <Image
