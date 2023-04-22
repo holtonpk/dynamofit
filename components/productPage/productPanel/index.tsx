@@ -95,13 +95,11 @@ const OrderButtons = ({ selectedProduct }: any) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const { top, bottom } =
-        buyNowStatic.current?.getBoundingClientRect?.() ?? {};
+      const { top } = buyNowStatic.current?.getBoundingClientRect?.() ?? {};
 
-      if (top === undefined || bottom === undefined) return;
+      if (top === undefined) return;
 
-      const windowHeight = window.innerHeight;
-      const showFixedButton = top > windowHeight - 40;
+      const showFixedButton = top < 40;
 
       setShowFixedButton(showFixedButton);
     };
