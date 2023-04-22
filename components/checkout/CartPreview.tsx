@@ -202,7 +202,10 @@ interface getCheckoutLinkProps {
 
 export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
   try {
-    const res = await fetch("/api/createCheckout", {
+    const url = new URL(process.env.URL || "http://localhost:3000");
+    url.pathname = "/api/createCheckout";
+
+    const res = await fetch(url.toString(), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
