@@ -114,8 +114,8 @@ const MoreInfo = () => {
             className="rounded w-full h-full"
           />
         </div>
-        <div className="flex flex-col p-8  md:w-[60%] items-center">
-          <h1 className="relative  gap-2 w-fit whitespace-nowrap  text- h-fit text-3xl md:text-5xl flex font-bold rounded-md bottom-0 ">
+        <div className="flex flex-col p-4  md:w-[60%] items-center">
+          <span className="relative  gap-2 w-fit whitespace-  text- h-fit text-lg md:text-5xl flex flex font-bold rounded-md bottom-0 ">
             Made by
             <h1 className="font-extrabold text-transparent  bg-clip-text bg-gradient-to-r from-main-800 via-main-400  to-main-800">
               Athletes
@@ -124,8 +124,8 @@ const MoreInfo = () => {
             <h1 className="font-extrabold text-transparent  bg-clip-text bg-gradient-to-r from-main-800 via-main-400  to-main-800">
               Athletes
             </h1>
-          </h1>
-          <p className="text-lg  flex-shrink w-[100%] md:text-3xl text-center  ">
+          </span>
+          <p className="text-sm  flex-shrink w-[100%] md:text-3xl text-center  ">
             Made with top-notch, high-density foam and a sturdy inner core, the
             PocketRoller is all about giving you the perfect balance between
             firmness and comfort. 😉 Target those pemain muscles, ease tension,
