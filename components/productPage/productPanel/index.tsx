@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Tabs from "./Tabs";
 import {
   FaMinus,
   FaPlus,
@@ -8,9 +7,7 @@ import {
   FaStarHalfAlt,
 } from "react-icons/fa";
 import { useCart } from "@/Contexts/CartContext";
-import { TbStarFilled, TbStar, TbStarHalfFilled } from "react-icons/tb";
 import Image from "next/image";
-import Questions from "../Questions";
 import { getCheckoutLink } from "@/components/checkout/CartPreview";
 import ReturnsImage from "@/public/images/Returns.png";
 import ShippingImage from "@/public/images/Shipping.png";
