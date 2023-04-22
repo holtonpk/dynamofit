@@ -85,7 +85,7 @@ const OrderButtons = ({ selectedProduct }: any) => {
   const { addToCart, setShowCartPreview } = useCart();
 
   const [showFixedButton, setShowFixedButton] = useState(false);
-  const buyNowStatic = useRef(null);
+  const buyNowStatic = useRef<HTMLButtonElement>(null);
   const addItemToCart = () => {
     addToCart(selectedProduct);
     setShowCartPreview(true);
@@ -95,20 +95,17 @@ const OrderButtons = ({ selectedProduct }: any) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!buyNowStatic.current) return;
-      const buyNowStaticPosition =
-        buyNowStatic.current?.getBoundingClientRect();
-      const buyNowStaticPositionTop = buyNowStaticPosition?.top || 0;
-      const buyNowStaticPositionBottom = buyNowStaticPosition?.bottom || 0;
+      const { top, bottom } =
+        buyNowStatic.current?.getBoundingClientRect?.() ?? {};
+
+      if (top === undefined || bottom === undefined) return;
+
       const windowHeight = window.innerHeight;
-      if (buyNowStaticPositionTop > windowHeight) {
-        setShowFixedButton(false);
-      } else if (buyNowStaticPositionBottom < 60) {
-        setShowFixedButton(true);
-      } else {
-        setShowFixedButton(false);
-      }
+      const showFixedButton = top > windowHeight || bottom < 60;
+
+      setShowFixedButton(showFixedButton);
     };
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
