@@ -211,16 +211,13 @@ export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
     // url.pathname = "/api/createCheckout";
     //dynamofit.vercel.app/
     // const res = await fetch(url.toString(), {
-    https: const res = await fetch(
-      "https://dynamofit.vercel.app/api/createCheckout",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-line-items": JSON.stringify(checkoutObject),
-        },
-      }
-    );
+    const res = await fetch("https://dynamofit.vercel.app/api/createCheckout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-line-items": JSON.stringify(checkoutObject),
+      },
+    });
 
     if (!res.ok) {
       throw new Error(`Server error: ${res.status}`);
