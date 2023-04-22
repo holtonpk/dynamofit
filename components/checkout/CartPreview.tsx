@@ -203,6 +203,11 @@ interface getCheckoutLinkProps {
 export const getCheckoutLink = async (checkoutObject: getCheckoutLinkProps) => {
   try {
     const url = new URL(process.env.URL || "http://localhost:3000");
+
+    console.log("envurl===>", process.env.URL);
+
+    console.log("url===>", url);
+
     url.pathname = "/api/createCheckout";
 
     const res = await fetch(url.toString(), {
