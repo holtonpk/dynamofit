@@ -23,7 +23,7 @@ const ProductPanel = ({
 }: any) => {
   return (
     <div className=" md:h-fit p-10 flex flex-col ">
-      <h1 className="text-5xl  font-sans font-bold text-[#141414]">
+      <h1 className="text-4xl md:text-5xl  font-sans font-bold text-[#141414]">
         {product.title} ™
       </h1>
       <Reviews product={product} />

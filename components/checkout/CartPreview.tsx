@@ -76,8 +76,8 @@ const CartPreview = () => {
             onClick={toggleCart}
             className="fixed z-20 bg-black/50 w-screen h-screen top-0 left-0 cursor-pointer "
           />
-          <div className="z-30 rounded-t-xl md:rounded-none  fixed md:w-1/3 bottom-0  md:top-0 md:-translate-y-0 w-full md:left-full  md:-translate-x-full md:h-screen h-fit bg-white  cart-preview-enter">
-            <div className="w-full text-2xl h-[5%] flex items-center justify-center p-3 text-black font-bold relative">
+          <div className="z-30 rounded-t-xl md:rounded-none  fixed md:w-1/3 bottom-0  md:top-0 md:-translate-y-0 w-full md:left-full  md:-translate-x-full md:h-screen h-[80vh] bg-white  cart-preview-enter">
+            <div className="w-full mt-3 text-2xl h-[5%] flex items-center justify-center p-3 text-black font-bold relative">
               Your Bag
               <button
                 onClick={toggleCart}
